@@ -60,20 +60,10 @@ def get_choices_service(service_id):
     return data
 
 
-@app.route('/directions/<service_id>/<disposition>')
-def show_direction(service_id, disposition):
-    print(service_id)
-    print(disposition)
-    response = get_choices_service(service_id)
-    return render_template('main2.html',
-                           lon=response['lon'],
-                           lat=response['lat'],
-                           googke_key=google_key)
-
-
 @app.route('/map/<service_id>')
 def show_map(service_id):
     response = get_choices_service(service_id)
+    
     return render_template('main2.html',
                            lon=response['lon'],
                            lat=response['lat'],
@@ -83,11 +73,11 @@ def show_map(service_id):
 @app.route('/service/<service_id>')
 def get_service_by_id(service_id):
 
-    print(service_id)
-
+    # Make a call to the NHS Choices API to retrieve the information for the specified service ID
     response = get_choices_service(service_id)
 
     return jsonify(response)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
+
