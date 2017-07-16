@@ -16,15 +16,9 @@ function submit_feedback(){
         console.log('Success!')
         window.location.replace('/pages/thankyou');
     })
-    // fetch('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', {
-    //     method: 'POST',
-    //     headers: new Headers({'content-type': 'application/JSON'}),
-    //     body: JSON.stringify({dm: service, stars: rating, latitude:0, longitude:0})
-    // })
-
 }
 
-var submit_button = document.getElementById('submit').addEventListener('click', submit_feedback)
+document.getElementById('submit').addEventListener('click', submit_feedback)
 
 var stars = document.getElementsByClassName('fa-star')
 Array.prototype.forEach.call(stars, function(star){
@@ -41,5 +35,4 @@ function choose_rating(event){
             star.classList.add("active")
         }
     })
-
 }
