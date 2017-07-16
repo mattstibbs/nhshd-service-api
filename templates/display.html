@@ -1,0 +1,132 @@
+<html>
+<head>
+	<title>Graphic page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/plugins/bootstrap-theme.css">
+	<link rel="stylesheet" href="/static/plugins/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/static/plugins/bootstrap.css">
+	<script src="/static/js/jquery-2.2.1.min.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<link type="/static/text/css" rel="stylesheet" href="/static/css/style.css">
+	<script src="/static/js/piechart.js"></script>
+	<style>
+	</style>
+	<script>
+        // kick things off
+        window.onload = createPieChart;
+        function createPieChart() {
+            //
+            // create a PieChart.
+            //
+            var pieChart = new PieChart( "piechart",
+                {
+                    includeLabels: true,
+                    data: [40, 250, 70],
+                    labels: ["11% Good", "69.6% Average", "17.4% Poor"],
+                    colors: [
+                        ["#FFDAB9", "#FFDAB9"],
+                        ["#E6E6FA", "#E6E6FA"],
+                        ["#E0FFFF", "#E0FFFF"]
+                    ]
+                }
+            );
+            var pieChart2 = new PieChart( "piechart2",
+                {
+                    includeLabels: true,
+                    data: [30, 250, 80],
+                    labels: ["10% Good", "69.9% Average", "21.1% Poor"],
+                    colors: [
+                        ["#FFDAB9", "#FFDAB9"],
+                        ["#E6E6FA", "#E6E6FA"],
+                        ["#E0FFFF", "#E0FFFF"]
+                    ]
+                }
+            );
+            var pieChart3 = new PieChart( "piechart3",
+                {
+                    includeLabels: true,
+                    data: [50, 250, 60],
+                    labels: ["15% Good", "69.9% Average", "16.1% Poor"],
+                    colors: [
+                        ["#FFDAB9", "#FFDAB9"],
+                        ["#E6E6FA", "#E6E6FA"],
+                        ["#E0FFFF", "#E0FFFF"]
+                    ]
+                }
+            );
+
+            // nothing appears until you call draw().
+
+            pieChart.draw();
+            pieChart2.draw();
+            pieChart3.draw();
+
+			/*
+			 * If you want to draw the labels separately, you can set
+			 * includeLabels to false, and call drawLabel() for each
+			 * pie chart segment.
+
+			 for (var i = 0; i < pieChart.labels.length; i++) {
+			 pieChart.drawLabel(i);
+			 pieChart2.drawLabel(i);
+
+			 }*/
+
+			/*
+			 * If you want to select a segment to highight it, you can
+			 * call select() for a given segment. Here's a little snippet
+			 * that animates selecting each segment.
+			 *
+			 var segment = 0;
+			 //var segment2 = 0;
+			 function nextSegment() {
+			 pieChart.select(segment);
+			 segment++;
+			 if (segment < pieChart.data.length) {
+			 setTimeout(nextSegment, 1000);
+			 }
+			 }
+			 setTimeout(nextSegment, 1000);
+           // pieChart2.select(segment2);
+           // segment2++;
+           // if (segment2 < pieChart2.data.length) {
+            //    setTimeout(nextSegment, 1000);
+            //}
+        //}
+       // setTimeout(nextSegment, 1000);*/
+
+        }
+	</script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+
+		<div> <a href="text1.html" class="btn" type="button">Home</a>
+		</div>
+			<h3>
+				Customer Satisfaction Data
+			</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<canvas id="piechart" width="400" height="400">
+			</canvas><h3>National</h3>
+		</div>
+		<div class="col-md-4">
+			<canvas id="piechart2" width="400" height="400">
+			</canvas><h3>Regional</h3>
+		</div>
+		<div class="col-md-4">
+			<canvas id="piechart3" width="400" height="400">
+			</canvas><h3>Manchester Royal Infirmary</h3>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

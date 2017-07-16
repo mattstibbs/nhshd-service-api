@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thankyou</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-theme.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap.css">
+    <script src="/static/js/jquery-2.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<br></br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h2>
+                    Thank you for your feedback
+                </h2>
+                <p>
+                    Please find attached a links to further services
+                </p>
+
+            </div>
+
+            <div>Register for on-line services<a href="{{ url_for('display_onlinereg') }}" class="btn" type="button">On-line Account</a>
+            </div>
+            <div> More information on Care Quality Commission<a href="http://www.cqc.org.uk/" class="btn" type="button">CQC</a>
+            </div>
+            <div> Feedback Statistics<a href="{{ url_for('display_page') }}" class="btn" type="button">Statistics</a>
+            </div>
+    </div>
+</div>
+</body>
+</html>
