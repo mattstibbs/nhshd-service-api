@@ -103,6 +103,11 @@ def display_thankyou():
 def display_onlinereg():
     return render_template('onlinereg.html')
 
+
+@app.route('/')
+def display_links():
+    return render_template('links.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
 
