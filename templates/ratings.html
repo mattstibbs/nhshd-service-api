@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/css/style.css">
   <meta charset="UTF-8">
   <title>Feedback</title>
 </head>
@@ -23,31 +23,31 @@
 
       <p>How would you rate your service at {{name}} today?</p>
 
-      <div class='icons'>
-        <span class='icon is-large' id="1">
-<i class = 'fa fa-star' onclick="fa fa-star"></i>
+      <div class='icons section'>
+        <span class='icon is-large' >
+<i class = 'fa fa-star' id="1"></i>
 </span>
 
-        <span class='icon is-large' id="2">
-<i class = 'fa fa-star'></i>
+        <span class='icon is-large' >
+<i class = 'fa fa-star' id="2"></i>
 </span>
 
-        <span class='icon is-large' id="3">
-<i class = 'fa fa-star'></i>
+        <span class='icon is-large'>
+<i class = 'fa fa-star' id="3"></i>
 </span>
 
-        <span class='icon is-large' id="4">
-<i class = 'fa fa-star'></i>
+        <span class='icon is-large'>
+<i class = 'fa fa-star' id="4"></i>
 </span>
 
-        <span class='icon is-large' id="5">
-<i class = 'fa fa-star'></i>
+        <span class='icon is-large'>
+<i class = 'fa fa-star' id="5"></i>
 </span>
       </div>
 
-      <button class='button is-primary' onclick=submit()>Submit</button>
+      <button class='button is-primary' id="submit">I'm Done</button>
     </div>
   </div>
 </body>
-
+<script src="/static/js/main3.js"></script>
 </html>
