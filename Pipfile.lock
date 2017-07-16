@@ -1,0 +1,62 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "a3d51294cab6eb08d616ed275b76ddb925330fc8f84adc69d2700448225178ec"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "version": "==2017.4.17"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "click": {
+            "version": "==6.7"
+        },
+        "flask": {
+            "version": "==0.12.2"
+        },
+        "flask-cors": {
+            "version": "==3.0.3"
+        },
+        "gunicorn": {
+            "version": "==19.7.1"
+        },
+        "idna": {
+            "version": "==2.5"
+        },
+        "itsdangerous": {
+            "version": "==0.24"
+        },
+        "jinja2": {
+            "version": "==2.9.6"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "requests": {
+            "version": "==2.18.1"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "untangle": {
+            "version": "==1.1.1"
+        },
+        "urllib3": {
+            "version": "==1.21.1"
+        },
+        "werkzeug": {
+            "version": "==0.12.2"
+        }
+    },
+    "develop": {}
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+</head>
+
+<body>
+  <div class='container has-text-centered'>
+
+    <div class='hero'>
+      <div class="hero-body">
+        <img src="http://nhshackday.com/assets/images/nhshd/header-logo2.png">
+      </div>
+    </div>
+    <div class='container'>
+      <h1 class='title'>NHS feedback</h1>
+
+      <p>How would you rate your service at {{name}} today?</p>
+
+      <div class='icons'>
+        <span class='icon is-large' id="1">
+<i class = 'fa fa-star' onclick="fa fa-star"></i>
+</span>
+
+        <span class='icon is-large' id="2">
+<i class = 'fa fa-star'></i>
+</span>
+
+        <span class='icon is-large' id="3">
+<i class = 'fa fa-star'></i>
+</span>
+
+        <span class='icon is-large' id="4">
+<i class = 'fa fa-star'></i>
+</span>
+
+        <span class='icon is-large' id="5">
+<i class = 'fa fa-star'></i>
+</span>
+      </div>
+
+      <button class='button is-primary' onclick=submit()>Submit</button>
+    </div>
+  </div>
+</body>
+
+</html>

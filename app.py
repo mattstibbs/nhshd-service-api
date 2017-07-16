@@ -103,6 +103,13 @@ def display_thankyou():
 def display_onlinereg():
     return render_template('onlinereg.html')
 
+
+@app.route('/feedback/<service_id>')
+def show_feedback(service_id):
+    response = get_choices_service(service_id)
+    return render_template('ratings.html',
+                           name=response['name'])
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
 
