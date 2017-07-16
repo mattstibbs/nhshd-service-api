@@ -11,10 +11,17 @@
  .h2 {
 
 	font-family: arial, helvetica, verdana, sans-serif;
-	font-color: #e6ccb3
+	font-color: #ffffff
 }
 .jumbotron {
-	background-color: #3399ff
+	background-color: #005EB8;
+	color: #ffffff
+}
+.jumbotron h1{
+	color: #ffffff
+}
+.jumbotron p{
+	color: #ffffff
 }
 
 #jumbotron2, #jumbotron3 {
