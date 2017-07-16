@@ -1,0 +1,26 @@
+
+
+.button {
+  	background-color: #cce6ff
+  }
+ 
+ .btn, .btn-default {
+  	background-color: #cce6ff
+  }
+ 
+ .h2 {
+
+	font-family: arial, helvetica, verdana, sans-serif;
+	font-color: #e6ccb3
+}
+.jumbotron {
+	background-color: #3399ff
+}
+
+#jumbotron2, #jumbotron3 {
+	background-color: #001a33
+}
+#output, #output2, #foot {
+	font-size: 14pt;
+	color: #ffffff
+}
