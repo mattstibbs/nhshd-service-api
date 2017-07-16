@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 import os
 import requests
 import untangle
@@ -107,6 +107,15 @@ def display_onlinereg():
 @app.route('/')
 def display_links():
     return render_template('links.html')
+
+
+@app.route('/post', methods=['POST'])
+def post_feedback():
+    data = request.json
+    r = requests.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback',
+                      json=data)
+    print(r.status_code)
+    return 'OK', 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
