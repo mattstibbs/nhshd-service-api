@@ -10,9 +10,11 @@ function submit_feedback(){
     var url = window.location.href.split('/')
     var service = url[url.length - 1]
     console.log(service)
-    $.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', {dm: service, stars: rating, latitude:0, longitude:0}, function(res){
-        console.log(res.status)
-        //window.location.replace('/pages/thankyou')
+    var data = {dm: service, stars: rating, latitude:0, longitude:0}
+    console.log(data);
+    $.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', data, function(res){
+        console.log('Success!')
+        window.location.replace('/pages/thankyou');
     })
     // fetch('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', {
     //     method: 'POST',
