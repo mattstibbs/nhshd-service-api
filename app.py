@@ -4,7 +4,7 @@ import requests
 import untangle
 from flask_cors import CORS
 import re
-import config
+import default_config as config
 
 app = Flask(__name__)
 
