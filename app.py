@@ -78,6 +78,31 @@ def get_service_by_id(service_id):
 
     return jsonify(response)
 
+
+@app.route('/pages/display')
+def display_page():
+    return render_template('display.html')
+
+
+@app.route('/pages/text1')
+def display_text1():
+    return render_template('text1.html')
+
+
+@app.route('/pages/text2')
+def display_text2():
+    return render_template('text2.html')
+
+
+@app.route('/pages/thankyou')
+def display_thankyou():
+    return render_template('thankyou.html')
+
+
+@app.route('/pages/onlinereg')
+def display_onlinereg():
+    return render_template('onlinereg.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
 
