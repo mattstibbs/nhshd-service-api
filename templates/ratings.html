@@ -21,30 +21,37 @@
     <div class='container'>
       <h1 class='title'>NHS feedback</h1>
 
-      <p>How would you rate your service at {{name}} today? (Your feedback is totally anonymous)</p>
+      <div class="attendance section">
+          <p>Did you attend {{ name }}?</p>
+          <form action="" method="post">
+            <input type="radio" name="attended" id="TEST_1" value="YES" /> Yes
+            <input type="radio" name="attended" id="TEST_2" value="NO" /> No
+          </form>
+      </div>
+
+        <p>How would you rate your service at {{name}} today? (Your feedback is totally anonymous)</p>
 
       <div class='icons section'>
         <span class='icon is-large' >
-<i class = 'fa fa-star' id="1"></i>
-</span>
+            <i class = 'fa fa-star' id="1"></i>
+        </span>
 
         <span class='icon is-large' >
-<i class = 'fa fa-star' id="2"></i>
-</span>
+            <i class = 'fa fa-star' id="2"></i>
+        </span>
 
         <span class='icon is-large'>
-<i class = 'fa fa-star' id="3"></i>
-</span>
+            <i class = 'fa fa-star' id="3"></i>
+        </span>
 
         <span class='icon is-large'>
-<i class = 'fa fa-star' id="4"></i>
-</span>
+            <i class = 'fa fa-star' id="4"></i>
+        </span>
 
         <span class='icon is-large'>
-<i class = 'fa fa-star' id="5"></i>
-</span>
+            <i class = 'fa fa-star' id="5"></i>
+        </span>
       </div>
-
       <button class='button is-primary' id="submit">I'm Done</button>
     </div>
   </div>

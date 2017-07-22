@@ -36,3 +36,24 @@ function choose_rating(event){
         }
     })
 }
+
+var radios = document.getElementsByName('attended');
+
+//console.log(radios[0])
+//console.log(radios[1])
+
+function check_attendance(){
+    var length = radios.length
+
+    for (var i = 0; i < length; i++) {
+        if (radios[i].checked) {
+        //var attended = radios[i].value;
+            console.log('TEST')
+        //alert(radios[i].value);
+        // only one radio can be logically checked, don't check the rest
+        break;
+        }
+    }
+}
+
+document.getElementById('attended').addEventListener('click', check_attendance)
