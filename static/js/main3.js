@@ -56,4 +56,4 @@ function check_attendance(){
     }
 }
 
-document.getElementById('attended').addEventListener('click', check_attendance)
+document.getElementsByName('attended').addEventListener('click', check_attendance)
