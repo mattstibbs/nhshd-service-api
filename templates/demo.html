@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <title>Demo</title>
+</head>
+
+<body>
+  <div class='container has-text-centered'>
+
+    <div class='hero'>
+      <div class="hero-body">
+        <img src="http://nhshackday.com/assets/images/nhshd/header-logo2.png">
+      </div>
+    </div>
+    <div class='container'>
+      <h1 class='title'>Project Demonstration</h1>
+
+      <div class="Demo Values">
+          <p>Input test variables:</p>
+          <form action="/demo" method="post">
+              <input type="text" name="name" value="Name"/>
+              <input type="text" name="phone_number" value="Phone Number"/>
+              <select name="service_id">
+                <option value="RW3RE">RW3RE</option>
+                <option value="RW3MR">RW3MR</option>
+                <option value="RW3RC">RW3RC</option>
+                <option value="RW3SM">RW3SM</option>
+                <option value="RW3DH">RW3DH</option>
+              </select>
+              <select name="service_name">
+                <option value="Manchester Royal Eye Hospital">Manchester Royal Eye Hospital</option>
+                <option value="Manchester Royal Infirmary">Manchester Royal Infirmary</option>
+                <option value="Royal Manchester Children's Hospital">Royal Manchester Children's Hospital</option>
+                <option value="Saint Mary's Hospital">Saint Mary's Hospital</option>
+                <option value="University Dental Hospital of Manchester">University Dental Hospital of Manchester</option>
+              </select>
+              <input type="text" name="wait_time"/>
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

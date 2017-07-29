@@ -5,6 +5,7 @@ import untangle
 from flask_cors import CORS
 import re
 import default_config as config
+import text_protocol as protocol
 
 app = Flask(__name__)
 
@@ -123,6 +124,28 @@ def post_feedback():
     print(r.status_code)
     print(r.text)
     return 'OK', 200
+
+
+@app.route('/demo', methods=['POST'])
+def demo():
+
+    if request.method == 'POST':
+        name = request.form['name']
+        phone_number = request.form['phone_number']
+        service_id = request.form['service_id']
+        service_name = request.form['service_name']
+        wait_time = request.form['wait_time']
+        protocol.send_messages(name, phone_number, service_id, service_name, wait_time)
+        return render_template('thankyou.html')
+    else:
+        return render_template('demo.html')
+
+
+@app.route('/demonstration', methods=['GET', 'POST'])
+def demonstration():
+
+    return render_template('demo.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
