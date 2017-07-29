@@ -5,6 +5,7 @@ google_maps_api_key = os.getenv('GOOGLE_API_KEY', '')
 account_sid = os.getenv('ACCOUNT_SID', '')
 auth_token = os.getenv('AUTH_TOKEN', '')
 twilio_number = os.getenv('TWILIO_NUMBER', '')
+my_number = os.getenv('MY_NUMBER', '')
 
 try:
     import config
@@ -13,5 +14,6 @@ try:
     account_sid = config.account_sid
     auth_token = config.auth_token
     twilio_number = config.twilio_number
+    my_number = config.my_number
 except:
     pass
