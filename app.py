@@ -9,6 +9,8 @@ import text_protocol as protocol
 
 app = Flask(__name__)
 
+#TODO Experiment with MySQL database backend. 
+
 # Allow Cross Origin Resource Sharing for routes under the API path so that other services can use the API
 regEx = re.compile("/*")
 CORS(app, resources={regEx: {"origins": "*"}})
