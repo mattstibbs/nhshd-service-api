@@ -121,6 +121,7 @@ def post_feedback():
     data = request.json
     r = requests.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback',
                       json=data)
+    #TODO Test running through MySQL rather than json - See MySQL Branch
     print(r.status_code)
     print(r.text)
     return 'OK', 200
