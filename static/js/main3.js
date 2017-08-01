@@ -3,21 +3,57 @@
  */
 
 function submit_feedback(){
-    var stars = document.getElementsByClassName('active')
-    var rating = stars.length
+    var stars = document.getElementsByClassName('active');
+    var rating = stars.length;
 
 
-    var url = window.location.href.split('/')
-    var service = url[url.length - 1]
-    console.log(service)
-    var data = {dm: service, stars: rating, latitude:0, longitude:0}
+    var url = window.location.href.split('/');
+    var service = url[url.length - 1];
+    console.log(service);
+    var data = {dm: service, stars: rating};
+    // console.log(data);
+
+    // $.post('0.0.0.0:5000/mysql', data, function(res){
+    //     console.log('Success!');
+    //     window.location.replace('/mysql');
+    //   })
+    // console.log("TEST");
+    // window.location.replace('/mysql');
+    // JSON.stringify(data)
+
+    $.ajax({
+        statusCode: {
+            500: function() {
+                alert("error");
+                }
+            },
+        type : "POST",
+        url : "/mysql",
+        data: JSON.stringify(data, null, '\t'),
+        //contentType: 'application/json;charset=UTF-8',
+        success: function(result) {
+            console.log("Success!");
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+
     console.log(data);
-    $.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', data, function(res){
-        console.log('Success!')
-        window.location.replace('/mysql');
-    })
-    //window.location.replace('/mysql')
+    //window.location.replace('/mysql');
 }
+
+
+
+// $.ajax({
+//     type: 'POST',
+//     url: window.location.href,
+//     data: JSON.stringify(response),
+//     dataType: 'json',
+//     contentType: 'application/json; charset=utf-8'
+// }).done(function(msg) {
+//     alert("Data Saved: " + msg);
+// });
 
 document.getElementById('submit').addEventListener('click', submit_feedback)
 

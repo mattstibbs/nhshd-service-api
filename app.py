@@ -11,6 +11,7 @@ from flaskext.mysql import MySQL
 mysql = MySQL()
 app = Flask(__name__)
 
+
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'ratings'
@@ -158,20 +159,23 @@ def demonstration():
     return render_template('demo.html')
 
 
-@app.route('/mysql')
+@app.route('/mysql', methods=['GET', 'POST'])
 def mysql():
-    url = request.url
-    url_split = url.split('/')
-    service = url_split - 1
-    feedback_1 = request.form['active']
-    feedback = feedback_1.length
-    print("Service = " + service)
-    print("Rating = " + feedback)
 
-    render_template('display.html')
-    # connector = mysql.connect()
-    # cursor = connector.cursor()
-    # cursor.execute("INSERT INTO user_ratings (service_id, rating) VALUES (" + service + ", " + feedback + "))"
+    output = request.get_json(force=True)
+    print(output)
+
+    service = request.json['dm']
+    print(service)
+
+    feedback = request.json['stars']
+    print(feedback)
+
+    connector = mysql.connect()
+    cursor = connector.cursor()
+    cursor.execute("INSERT INTO user_ratings (service_id, rating) VALUES (" + service + ", " + feedback + "))")
+
+    return render_template('thankyou.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
