@@ -6,8 +6,16 @@ from flask_cors import CORS
 import re
 import default_config as config
 import text_protocol as protocol
+from flaskext.mysql import MySQL
 
+mysql = MySQL()
 app = Flask(__name__)
+
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'ratings'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
 
 #TODO Experiment with MySQL database backend. 
 
@@ -150,6 +158,22 @@ def demonstration():
     return render_template('demo.html')
 
 
+@app.route('/mysql')
+def mysql():
+    url = request.url
+    url_split = url.split('/')
+    service = url_split - 1
+    feedback_1 = request.form['active']
+    feedback = feedback_1.length
+    print("Service = " + service)
+    print("Rating = " + feedback)
+
+    render_template('display.html')
+    # connector = mysql.connect()
+    # cursor = connector.cursor()
+    # cursor.execute("INSERT INTO user_ratings (service_id, rating) VALUES (" + service + ", " + feedback + "))"
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
+    # TODO Change this to the appropriate webserver IP
 

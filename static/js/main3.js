@@ -14,8 +14,9 @@ function submit_feedback(){
     console.log(data);
     $.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback', data, function(res){
         console.log('Success!')
-        window.location.replace('/pages/thankyou');
+        window.location.replace('/mysql');
     })
+    //window.location.replace('/mysql')
 }
 
 document.getElementById('submit').addEventListener('click', submit_feedback)
@@ -37,23 +38,23 @@ function choose_rating(event){
     })
 }
 
-var radios = document.getElementsByName('attended');
-
-//console.log(radios[0])
-//console.log(radios[1])
-
-function check_attendance(){
-    var length = radios.length
-
-    for (var i = 0; i < length; i++) {
-        if (radios[i].checked) {
-        //var attended = radios[i].value;
-            console.log('TEST')
-        //alert(radios[i].value);
-        // only one radio can be logically checked, don't check the rest
-        break;
-        }
-    }
-}
-
-document.getElementsByName('attended').addEventListener('click', check_attendance)
+// var radios = document.getElementsByName('attended');
+//
+// //console.log(radios[0])
+// //console.log(radios[1])
+//
+// function check_attendance(){
+//     var length = radios.length
+//
+//     for (var i = 0; i < length; i++) {
+//         if (radios[i].checked) {
+//         //var attended = radios[i].value;
+//             console.log('TEST')
+//         //alert(radios[i].value);
+//         // only one radio can be logically checked, don't check the rest
+//         break;
+//         }
+//     }
+// }
+//
+// document.getElementsByName('attended').addEventListener('click', check_attendance)
