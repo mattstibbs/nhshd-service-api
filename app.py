@@ -6,17 +6,10 @@ from flask_cors import CORS
 import re
 import default_config as config
 import text_protocol as protocol
-from flaskext.mysql import MySQL
+import sqlite3
+import database
 
-mysql = MySQL()
 app = Flask(__name__)
-
-
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'ratings'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
 
 #TODO Experiment with MySQL database backend. 
 
@@ -171,11 +164,20 @@ def mysql():
     feedback = request.json['stars']
     print(feedback)
 
-    connector = mysql.connect()
-    cursor = connector.cursor()
-    cursor.execute("INSERT INTO user_ratings (service_id, rating) VALUES (" + service + ", " + feedback + "))")
-
     return render_template('thankyou.html')
+
+
+@app.route('/database')
+def db_insert():
+    database.db()
+    # database = 'UGO.db'
+    # conn = sqlite3.connect(database)
+    # c = conn.cursor()
+    # query = "INSERT INTO ratings (service_id, rating)  VALUES ('TEST', 4)"
+    # c.execute(query)
+    # conn.commit()
+    # print('Added to DB')
+    return render_template('display.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)

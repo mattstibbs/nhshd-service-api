@@ -1,0 +1,1 @@
+CREATE TABLE "ratings" ("index" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "service_id" TEXT, "rating" INTEGER);

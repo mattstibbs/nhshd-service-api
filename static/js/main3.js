@@ -40,7 +40,7 @@ function submit_feedback(){
     });
 
     console.log(data);
-    //window.location.replace('/mysql');
+    window.location.replace('/database');
 }
 
 
