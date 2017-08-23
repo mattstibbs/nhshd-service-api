@@ -19,7 +19,7 @@ function submit_feedback(){
                 }
             },
         type : "POST",
-        url : "/mysql",
+        url : "/firebase",
         data: JSON.stringify(data),
         success: function(result) {
             console.log("Success!");
@@ -30,7 +30,7 @@ function submit_feedback(){
     });
     // var data_1 = JSON.stringify(data);
     // console.log(data_1);
-    window.location.replace('/mysql');
+    window.location.replace('/pages/thankyou');
 }
 
 document.getElementById('submit').addEventListener('click', submit_feedback)

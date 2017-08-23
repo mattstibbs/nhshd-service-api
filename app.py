@@ -6,6 +6,7 @@ from flask_cors import CORS
 import re
 import default_config as config
 import text_protocol as protocol
+from firebase import firebase
 import sqlite3
 import database
 
@@ -193,6 +194,24 @@ def db_insert():
     # conn.commit()
     # print('Added to DB')
     return render_template('display.html')
+
+count = 0
+firebase = firebase.FirebaseApplication('https://nhs-ugo.firebaseio.com/', None)
+
+
+@app.route('/firebase', methods=['GET', 'POST'])
+def fireput():
+
+    output = request.get_json(force=True)
+    print(output)
+    service_id = request.json['dm']
+    feedback = request.json['stars']
+    global count
+    count += 1
+    insert_data = {'Rating' : feedback, 'Service' : service_id}
+    firebase.put('/feedback', 'report' + str(count), insert_data)
+    print('TEST' + str(count))
+    return 'OK', 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
