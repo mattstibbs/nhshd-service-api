@@ -115,6 +115,7 @@ def show_feedback(service_id):
     return render_template('ratings.html',
                            name=response['name'])
 
+
 @app.route('/')
 def display_links():
     return render_template('links.html')
@@ -125,7 +126,7 @@ def post_feedback():
     data = request.json
     r = requests.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback',
                       json=data)
-    #TODO Test running through MySQL rather than json - See MySQL Branch
+    # TODO Test running through MySQL rather than json - See MySQL Branch
     print(r.status_code)
     print(r.text)
     return 'OK', 200
@@ -152,7 +153,7 @@ def demonstration():
     return render_template('demo.html')
 
 
-@app.route('/mysql', methods=['GET', 'POST'])
+@app.route('/mysql', methods=['POST'])
 def mysql():
 
     output = request.get_json(force=True)
@@ -164,14 +165,28 @@ def mysql():
     feedback = request.json['stars']
     print(feedback)
 
-    return render_template('thankyou.html')
+    # TODO Check SQLite port and ensure that port blocking is not the problem
+    # https://stackoverflow.com/questions/45567007/sqlite-and-flask-insert-statement-error
+    # Method runs as expected from `database.py` but no database insert is made from here
+    database.db(service, feedback)
+
+    return 'OK', 200
+
+
+@app.route('/postjson', methods=['POST'])
+def post_json_handler():
+    content = request.get_json()
+    print(content)
+    return 'JSON posted'
 
 
 @app.route('/database')
 def db_insert():
     database.db()
-    # database = 'UGO.db'
-    # conn = sqlite3.connect(database)
+    print('TEST')
+
+    # database_name = 'UGO.db'
+    # conn = sqlite3.connect(database_name)
     # c = conn.cursor()
     # query = "INSERT INTO ratings (service_id, rating)  VALUES ('TEST', 4)"
     # c.execute(query)

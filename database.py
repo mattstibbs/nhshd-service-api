@@ -1,18 +1,21 @@
 import sqlite3
 
 
-def db():
+def db(service, feedback):
 
-    database = 'UGO.db'
-    conn = sqlite3.connect(database)
-    c = conn.cursor()
-    query = "INSERT INTO ratings (service_id, rating)  VALUES ('RW3RE', 2)"
-    c.execute(query)
-    conn.commit()
-    print('Added to DB')
+    try:
+        database = 'UGO.db'
+        conn = sqlite3.connect(database)
+        c = conn.cursor()
+        query = "INSERT INTO ratings (service_id, rating)  VALUES (?, ?)"
+        c.execute(query, (service, feedback))
+        conn.commit()
+        conn.close()
+        print('Added to DB')
+    except:
+        print("An error occurred")
 
-
-db()
+# db('TEST', 10)
 
 
 
