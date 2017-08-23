@@ -7,12 +7,11 @@ import re
 import default_config as config
 import text_protocol as protocol
 from firebase import firebase
-import sqlite3
-import database
+import database as database
 
 app = Flask(__name__)
 
-#TODO Experiment with MySQL database backend. 
+# This branch contains the firebase link, which is responsible for pushing data to the JSON Firebase backend
 
 # Allow Cross Origin Resource Sharing for routes under the API path so that other services can use the API
 regEx = re.compile("/*")
@@ -20,7 +19,11 @@ CORS(app, resources={regEx: {"origins": "*"}})
 
 api_key = config.api_key
 google_key = config.google_maps_api_key
+count = 0
+firebase = firebase.FirebaseApplication('https://nhs-ugo.firebaseio.com/', None)
 
+
+# Define function to scrape the NHS Choices website for the data to display on the relevant service.
 
 def get_choices_service(service_id):
 
@@ -67,6 +70,7 @@ def get_choices_service(service_id):
 
 
 @app.route('/map/<service_id>')
+# Map page which returns a map to the relevant service. This link will be sent in Text 1.
 def show_map(service_id):
     response = get_choices_service(service_id)
     
@@ -77,6 +81,7 @@ def show_map(service_id):
 
 
 @app.route('/service/<service_id>')
+# Returns the JSON response for a call to the meta function above.
 def get_service_by_id(service_id):
 
     # Make a call to the NHS Choices API to retrieve the information for the specified service ID
@@ -86,31 +91,37 @@ def get_service_by_id(service_id):
 
 
 @app.route('/pages/display')
+# Return the 'display' page. This is a page which demonstrates the data responses that could be possible.
 def display_page():
     return render_template('display.html')
 
 
 @app.route('/pages/text1')
+# Return an HTML example of the SMS that could be sent first
 def display_text1():
     return render_template('text1.html')
 
 
 @app.route('/pages/text2')
+# Return an HTML example of the SMS that could be sent second
 def display_text2():
     return render_template('text2.html')
 
 
 @app.route('/pages/thankyou')
+# Return an example of the 'response received' page
 def display_thankyou():
     return render_template('thankyou.html')
 
 
 @app.route('/pages/onlinereg')
+# Return a page which directs users how to register for NHS online services
 def display_onlinereg():
     return render_template('onlinereg.html')
 
 
 @app.route('/feedback/<service_id>')
+# The central feedback page that would be linked to in the second SMS
 def show_feedback(service_id):
     response = get_choices_service(service_id)
     return render_template('ratings.html',
@@ -118,11 +129,13 @@ def show_feedback(service_id):
 
 
 @app.route('/')
+# Initial demonstration page which will step through the process
 def display_links():
     return render_template('links.html')
 
 
 @app.route('/post', methods=['POST'])
+# First pass at posting to a back end. This method became useless when the back end was altered.
 def post_feedback():
     data = request.json
     r = requests.post('http://ec2-13-58-211-169.us-east-2.compute.amazonaws.com/api/feedback',
@@ -134,8 +147,8 @@ def post_feedback():
 
 
 @app.route('/demo', methods=['POST'])
+# The main demonstration of the system.  This page will allow a user to fully demonstrate the system working.
 def demo():
-
     if request.method == 'POST':
         name = request.form['name']
         phone_number = request.form['phone_number']
@@ -149,12 +162,13 @@ def demo():
 
 
 @app.route('/demonstration', methods=['GET', 'POST'])
+# Render the demonstration form in HTML
 def demonstration():
-
     return render_template('demo.html')
 
 
 @app.route('/mysql', methods=['POST'])
+# Method that is now obsolete given the lack of a MySQL back end
 def mysql():
 
     output = request.get_json(force=True)
@@ -169,12 +183,13 @@ def mysql():
     # TODO Check SQLite port and ensure that port blocking is not the problem
     # https://stackoverflow.com/questions/45567007/sqlite-and-flask-insert-statement-error
     # Method runs as expected from `database.py` but no database insert is made from here
-    database.db(service, feedback)
+
 
     return 'OK', 200
 
 
 @app.route('/postjson', methods=['POST'])
+# PostMan API testing method. This allows easy testing to ensure that the correct response is returned by the API
 def post_json_handler():
     content = request.get_json()
     print(content)
@@ -182,24 +197,15 @@ def post_json_handler():
 
 
 @app.route('/database')
+# A now obsolete method for posting to a database. See `database.py` for implementation.
 def db_insert():
     database.db()
     print('TEST')
-
-    # database_name = 'UGO.db'
-    # conn = sqlite3.connect(database_name)
-    # c = conn.cursor()
-    # query = "INSERT INTO ratings (service_id, rating)  VALUES ('TEST', 4)"
-    # c.execute(query)
-    # conn.commit()
-    # print('Added to DB')
     return render_template('display.html')
-
-count = 0
-firebase = firebase.FirebaseApplication('https://nhs-ugo.firebaseio.com/', None)
 
 
 @app.route('/firebase', methods=['GET', 'POST'])
+# The final backend connection for the app. This method takes JSON from the client side JS and posts it to the Firebase
 def fireput():
 
     output = request.get_json(force=True)
