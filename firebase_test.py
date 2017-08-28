@@ -8,18 +8,14 @@ feedback = 4
 
 
 count = 0
-    # @app.route(‘/api/put’, methods=[‘GET’, ‘POST’])
+
+
 def fireput():
 
     global count
     count += 1
-    insert_data = {'Rating' : feedback, 'Service' : service_id}
+    insert_data = {'Rating': feedback, 'Service': service_id}
     firebase.put('/feedback', 'report' + str(count), insert_data)
-
-fireput()
-
-service_id = "TEST"
-feedback = 10
 
 fireput()
 

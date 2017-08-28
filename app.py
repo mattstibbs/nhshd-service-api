@@ -183,8 +183,6 @@ def mysql():
     # TODO Check SQLite port and ensure that port blocking is not the problem
     # https://stackoverflow.com/questions/45567007/sqlite-and-flask-insert-statement-error
     # Method runs as expected from `database.py` but no database insert is made from here
-
-
     return 'OK', 200
 
 
