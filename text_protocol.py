@@ -34,7 +34,7 @@ def send_messages(name, phone_number, service_id, service_name, wait_time):
         )
     print(message_1.sid)
 
-    # For demo purposes this is set to one minute.
+    # For demo purposes this is set to an arbitrary.
     # In reality will be set to variable wait_time_seconds
     time.sleep(15)
 
