@@ -77,6 +77,7 @@ def show_map(service_id):
     return render_template('main2.html',
                            lon=response['lon'],
                            lat=response['lat'],
+                           tel=response['telephone'],
                            google_key=google_key)
 
 
