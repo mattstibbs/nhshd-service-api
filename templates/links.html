@@ -1,9 +1,30 @@
 <html>
-<a href="{{ url_for('display_text1') }}">Text 1</a><br/>
-<a href="{{ url_for('show_map', service_id='RW3DH') }}">Show Map</a><br/>
-<a href="{{ url_for('display_text2') }}">Text 2</a><br/>
-<a href="{{ url_for('show_feedback', service_id='RW3RE') }}">Feedback</a><br/>
-<a href="{{ url_for('display_thankyou') }}">Thank you</a><br/>
-<a href="{{ url_for('display_onlinereg') }}">Online Registration</a><br/>
-<a href="{{ url_for('display_page') }}">Stats Page</a><br/>
+    <head>
+    <!-- This stylesheet contains specific styles for displaying the map
+         on this page. Replace it with your own styles as described in the
+         documentation:
+         https://developers.google.com/maps/documentation/javascript/tutorial -->
+        <link rel="stylesheet" href="https://developers.google.com/maps/documentation/javascript/demos/demos.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+    </head>
+    <body>
+        <div class='container has-text-centered'>
+            <div class="hero">
+                <div class="hero-body">
+                    <img src="http://nhshackday.com/assets/images/nhshd/header-logo2.png">
+                </div>
+            </div>
+            <div>
+                <a href="{{ url_for('demonstration') }}">Demonstration</a><br/>
+                <a href="{{ url_for('display_text1') }}">Text 1</a><br/>
+                <a href="{{ url_for('show_map', service_id='RW3RE') }}">Show Map</a><br/>
+                <a href="{{ url_for('display_text2') }}">Text 2</a><br/>
+                <a href="{{ url_for('show_feedback', service_id='RW3RE') }}">Feedback</a><br/>
+                <a href="{{ url_for('display_thankyou') }}">Thank you</a><br/>
+                <a href="{{ url_for('display_onlinereg') }}">Online Registration</a><br/>
+            </div>
+        </div>
+    </body>
+
 </html>

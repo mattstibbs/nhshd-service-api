@@ -7,7 +7,7 @@ import re
 import default_config as config
 import text_protocol as protocol
 from firebase import firebase
-import database as database
+# import database as database
 
 app = Flask(__name__)
 
@@ -221,4 +221,6 @@ def fireput():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
     # TODO Change this to the appropriate webserver IP
+    # TODO add colour and design to the demo page
+    # TODO create a page to show the data from Firebase
 
