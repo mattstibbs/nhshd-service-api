@@ -219,8 +219,7 @@ def fireput():
     return 'OK', 200
 
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
-    app.run()
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
     # TODO Change this to the appropriate webserver IP
     # TODO add colour and design to the demo page
     # TODO create a page to show the data from Firebase
