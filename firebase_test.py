@@ -1,7 +1,8 @@
 from firebase import firebase
+import config
 
 # TODO Add user authentication to Firebase account
-database = firebase.FirebaseApplication('https://nhs-ugo.firebaseio.com/', None)
+database = firebase.FirebaseApplication(config.firebase, None)
 
 service_id = "RW3RE"
 feedback = 4
